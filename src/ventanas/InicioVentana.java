@@ -65,6 +65,14 @@ public class InicioVentana extends JFrame {
 	
 		
 		JButton btnBuscar = new JButton("BUSCAR");
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				BusquedaVentana a = new BusquedaVentana();
+				a.setLocationRelativeTo(InicioVentana.this);
+				a.setVisible(true);
+				InicioVentana.this.setVisible(false);
+			}
+		});
 		btnBuscar.setBounds(146, 97, 115, 29);
 		contentPane.add(btnBuscar);
 		
