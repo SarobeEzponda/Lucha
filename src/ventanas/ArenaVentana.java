@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import logica.Pelea;
 import personas.Superheroe;
 import personas.Villano;
 import sqlite.SelectData;
@@ -51,6 +52,8 @@ public class ArenaVentana extends JFrame {
 	 * Create the frame.
 	 */
 	public ArenaVentana() {
+		
+		Pelea pelea = new Pelea ();
 		
 		SelectData s = new SelectData();
 		listaVillano = s.selectVillanos();
@@ -96,7 +99,7 @@ public class ArenaVentana extends JFrame {
 		    listModel.addElement(listaSuperheroe.get(i));
 		}
 		listSuper.setModel(listModel);
-		
+				
 		JList <Villano >listVil = new JList <Villano>();
 		listVil.setBounds(572, 71, 86, 55);
 		contentPane.add(listVil);
@@ -108,7 +111,46 @@ public class ArenaVentana extends JFrame {
 		}
 		listVil.setModel(listModel1);
 
+		
+		JTextArea textAreaGana = new JTextArea();
+		textAreaGana.setBounds(333, 375, 183, 45);
+		
+		textAreaGana.setVisible(false);
+		//contentPane.add(textAreaGana);
+		getContentPane().add(textAreaGana);
+		
+		ArrayList<Superheroe> selecSuper = new ArrayList <Superheroe> ();
+		ArrayList<Villano> selecVil = new ArrayList <Villano> ();
 		JButton btnLuchar = new JButton("LUCHAR");
+		btnLuchar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {		
+				for(int i = 0; i<listaSuperheroe.size(); i++)
+				{
+					if(listaSuperheroe.get(i)== listSuper.getSelectedValue()){
+						int j =0;
+						selecSuper.clear();
+						selecSuper.add(listaSuperheroe.get(i));
+						//add(j, listaSuperheroe.get(i));
+						System.out.println("el nombre es:" + selecSuper.get(j));
+					}
+				}
+				for(int i = 0; i<listaVillano.size(); i++)
+				{
+					if(listaVillano.get(i)== listVil.getSelectedValue()){
+						int j =0;
+						selecVil.clear();
+						selecVil.add(listaVillano.get(i));
+						//add(j, listaSuperheroe.get(i));
+						System.out.println("el nombre es:" + selecVil.get(j));
+					}
+				}
+				
+				
+				String textoG = pelea.sistemaPelea(selecSuper,selecVil);
+				textAreaGana.setText(textoG);
+				textAreaGana.setVisible(true);
+			}
+		});
 		btnLuchar.setBounds(572, 371, 115, 29);
 		contentPane.add(btnLuchar);
 		
@@ -156,6 +198,7 @@ public class ArenaVentana extends JFrame {
 		textAreaV.setText(textoV);
 		textAreaV.setVisible(false);
 		getContentPane().add(textAreaV);
+		
 		
 		
 	
