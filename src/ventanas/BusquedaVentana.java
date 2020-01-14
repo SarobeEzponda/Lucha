@@ -17,6 +17,10 @@ import javax.swing.JList;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 
@@ -69,7 +73,7 @@ public class BusquedaVentana extends JFrame {
 		listModelF.addElement("Villano");		
 		listFil.setModel(listModelF);
 		
-		JList  listBus = new JList();
+		JList listBus = new JList();
 		listBus.setBounds(28, 89, 98, 92);
 		contentPane.add(listBus);
 		
@@ -89,7 +93,7 @@ public class BusquedaVentana extends JFrame {
 				BusquedaVentana.this.dispose();
 			}
 		});
-		btnVolver.setBounds(25, 197, 104, 29);
+		btnVolver.setBounds(28, 261, 104, 29);
 		contentPane.add(btnVolver);
 		
 		Ordenar ordenar = new Ordenar();
@@ -102,6 +106,10 @@ public class BusquedaVentana extends JFrame {
 		textAreaBus.setVisible(false);
 		getContentPane().add(textAreaBus);
 
+		JTextArea textAreaMenor = new JTextArea();
+		textAreaMenor.setBounds(147, 266, 326, 29);
+		textAreaMenor.setVisible(false);
+		getContentPane().add(textAreaMenor);
 		
 		JButton btnBuscar = new JButton("Buscar");
 		btnBuscar.addActionListener(new ActionListener() {
@@ -182,7 +190,112 @@ public class BusquedaVentana extends JFrame {
 		lblFiltrarPor.setBounds(156, 45, 81, 20);
 		contentPane.add(lblFiltrarPor);
 		
+		JButton btnElMenor = new JButton("Busqueda Avanzado:");
+		btnElMenor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+					if(listBus.getSelectedValue()=="Vida"){
+						ArrayList <Personaje> listaVida = Ordenar.ordenVida();
+						String texto1 = "";
+						
+						if(listFil.getSelectedValue()=="Superheroe")
+						{										
+							textAreaMenor.setVisible(true);
 
+							for(int i = 0; i<listaVida.size(); i++){
+								if(listaVida.get(i).getIdPer()==0 || listaVida.get(i).getIdPer()==1 ){
+									
+									
+									
+									ArrayList <Personaje> wordList = new ArrayList <Personaje> (listaVida);
+									Stream <Personaje> words = wordList.stream();
+									Stream <Personaje> tongWords = words.filter(w -> w.getVida()>350 && w.getIdPer()<=1);
+								
+									List<Personaje> tokenlist = tongWords.collect(Collectors.toList());    //list
+									 
+									
+									texto1 = tokenlist.get(0).getNombre() + " con "+ tokenlist.get(0).getVida() + System.lineSeparator() ;									 								
+								}
+							}
+							textAreaMenor.setText(texto1);
+						}	
+						else if(listFil.getSelectedValue()=="Villano")
+						{										
+							textAreaMenor.setVisible(true);
+
+							for(int i = 0; i<listaVida.size(); i++){
+								if(listaVida.get(i).getIdPer()==2 || listaVida.get(i).getIdPer()==3 ){
+									
+									
+									
+									ArrayList <Personaje> wordList = new ArrayList <Personaje> (listaVida);
+									Stream <Personaje> words = wordList.stream();
+									Stream <Personaje> tongWords = words.filter(w -> w.getVida()>350 && w.getIdPer()>1);
+								
+									List<Personaje> tokenlist = tongWords.collect(Collectors.toList());    //list
+									 
+									
+									texto1 = tokenlist.get(0).getNombre() + " con "+ tokenlist.get(0).getVida() + System.lineSeparator() ;									 								
+								}
+							}
+							textAreaMenor.setText(texto1);
+						}	
+				}	
+					else if(listBus.getSelectedValue()=="Ataque"){
+						ArrayList <Personaje> listaVida = Ordenar.ordenAtaque();
+						String texto1 = "";
+						
+						if(listFil.getSelectedValue()=="Superheroe")
+						{										
+							textAreaMenor.setVisible(true);
+
+							for(int i = 0; i<listaAtaque.size(); i++){
+								if(listaAtaque.get(i).getIdPer()==0 || listaAtaque.get(i).getIdPer()==1 ){
+									
+									
+									
+									ArrayList <Personaje> wordList = new ArrayList <Personaje> (listaAtaque);
+									Stream <Personaje> words = wordList.stream();
+									Stream <Personaje> tongWords = words.filter(w -> w.getAtaque()>105 && w.getIdPer()<=1);
+								
+									List<Personaje> tokenlist = tongWords.collect(Collectors.toList());    //list
+									 
+									
+									texto1 = tokenlist.get(0).getNombre() + " con "+ tokenlist.get(0).getAtaque() + System.lineSeparator() ;									 								
+								}
+							}
+							textAreaMenor.setText(texto1);
+						}	
+						else if(listFil.getSelectedValue()=="Villano")
+						{										
+							textAreaMenor.setVisible(true);
+
+							for(int i = 0; i<listaVida.size(); i++){
+								if(listaAtaque.get(i).getIdPer()==2 || listaAtaque.get(i).getIdPer()==3 ){
+									
+									
+									
+									ArrayList <Personaje> wordList = new ArrayList <Personaje> (listaAtaque);
+									Stream <Personaje> words = wordList.stream();
+									Stream <Personaje> tongWords = words.filter(w -> w.getAtaque()>105 && w.getIdPer()>1);
+								
+									List<Personaje> tokenlist = tongWords.collect(Collectors.toList());    //list
+									 
+									
+									texto1 = tokenlist.get(0).getNombre() + " con "+ tokenlist.get(0).getAtaque() + System.lineSeparator() ;									 								
+								}
+							}
+							textAreaMenor.setText(texto1);
+						}	
+				}	
+		}
+		});
+		btnElMenor.setBounds(156, 198, 185, 29);
+		contentPane.add(btnElMenor);
+		
+		JLabel lblsoloApareceEl = new JLabel("(solo aparece el mayor)");
+		lblsoloApareceEl.setBounds(163, 227, 178, 34);
+		contentPane.add(lblsoloApareceEl);
 	}
 	
 }
