@@ -1,18 +1,21 @@
 package ventanas;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
+import java.awt.Font;
 
 public class InicioVentana extends JFrame {
 
@@ -39,15 +42,11 @@ public class InicioVentana extends JFrame {
 	 */
 	public InicioVentana() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 401, 332);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		JLabel lblMenuDeInicio = new JLabel("MENU DE INICIO");
-		lblMenuDeInicio.setBounds(146, 16, 124, 20);
-		contentPane.add(lblMenuDeInicio);
 		
 		JButton btnArena = new JButton("ARENA");
 		btnArena.addActionListener(new ActionListener() {
@@ -58,8 +57,15 @@ public class InicioVentana extends JFrame {
 				InicioVentana.this.setVisible(false);
 			}
 		});
+		
+		JLabel lblMenuDeInicio = new JLabel("MENU DE INICIO");
+		lblMenuDeInicio.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblMenuDeInicio.setForeground(Color.WHITE);
+		lblMenuDeInicio.setBackground(Color.RED);
+		lblMenuDeInicio.setBounds(122, 40, 156, 20);
+		contentPane.add(lblMenuDeInicio);
 	
-		btnArena.setBounds(146, 52, 115, 29);
+		btnArena.setBounds(133, 99, 115, 29);
 		contentPane.add(btnArena);
 		
 	
@@ -73,7 +79,7 @@ public class InicioVentana extends JFrame {
 				InicioVentana.this.setVisible(false);
 			}
 		});
-		btnBuscar.setBounds(146, 97, 115, 29);
+		btnBuscar.setBounds(133, 147, 115, 29);
 		contentPane.add(btnBuscar);
 		
 		JButton btnSalir = new JButton("SALIR");
@@ -89,7 +95,29 @@ public class InicioVentana extends JFrame {
 				
 			}
 		});
-		btnSalir.setBounds(146, 142, 115, 29);
+		btnSalir.setBounds(133, 192, 115, 29);
 		contentPane.add(btnSalir);
+		
+		JPanel panelFoto = new JPanel();
+		panelFoto.setBounds(0, 0, 375, 276);
+		panelFoto.setBackground(Color.DARK_GRAY);
+		contentPane.add(panelFoto);
+		panelFoto.setLayout(null);
+		
+		JLabel labelF = new JLabel("New label");
+		labelF.setBounds(0, 0, 445, 286);
+		panelFoto.add(labelF);
+		labelF.setIcon(new ImageIcon(InicioVentana.class.getResource("/imagenes/ElCombateDefinitivo_opt (1).jpg")));
+		
+//		JPanel panel = new JPanel();
+//		panel.setBackground(Color.DARK_GRAY);
+//		panel.setBounds(0, 0, 244, 370);
+//		contentPane.add(panel);
+//		panel.setLayout(null);
+//		
+//		JLabel label = new JLabel("New label");
+//		label.setBounds(0, 0, 244, 370);
+//		panel.add(label);
+//		label.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/imagenes/Sin t\u00EDtulo-1.jpg")));
 	}
 }
