@@ -24,16 +24,24 @@ import javax.swing.JTextField;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTextArea;
 
+/**Es la clase ArenaVentana en donde, se selecciona a un villano y un suerhéroe para combatir entre ellos y se
+ * obtiene a un vencedor o un empate. Además se puede obtener información general de los personajes.
+ * @author Pablo Sarobe Ezponda
+ *
+ */
 public class ArenaVentana extends JFrame {
 
+	/**Método en dodne se lanza la ventana
+	 * 
+	 */
 	private JPanel contentPane;
 	private ArrayList <Villano>listaVillano ;
 	private ArrayList <Superheroe>listaSuperheroe;
 	JTextArea textArea;
 	JTextArea textAreaV;
 
-	/**
-	 * Launch the application.
+	/**Met
+	 * @param args
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -49,7 +57,9 @@ public class ArenaVentana extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Se crea el JFrame en dodne se puede realizar diferentes opciones, se selecciona un villano y un spuerhéroe y 
+	 * combaten pulsanod el botón LUCHA. Si le pulsas el botón de más infor, obtienes información adicional.
+	 * Si pulsas el botón VOLVER vuelves al menu inicial (ventana inicio)
 	 */
 	public ArenaVentana() {
 		
@@ -67,7 +77,7 @@ public class ArenaVentana extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblArena = new JLabel("ARENA");
-		lblArena.setBounds(169, 16, 69, 20);
+		lblArena.setBounds(366, 16, 69, 20);
 		contentPane.add(lblArena);
 		
 		JButton btnVolver = new JButton("VOLVER");
@@ -95,9 +105,9 @@ public class ArenaVentana extends JFrame {
 		
 		DefaultListModel<Superheroe> listModel = new DefaultListModel <Superheroe>();
 		for (int i = 0; i < listaSuperheroe.size(); i++)
-		{
-		    listModel.addElement(listaSuperheroe.get(i));
-		}
+			{
+			    listModel.addElement(listaSuperheroe.get(i));
+			}
 		listSuper.setModel(listModel);
 				
 		JList <Villano >listVil = new JList <Villano>();
@@ -106,9 +116,9 @@ public class ArenaVentana extends JFrame {
 		
 		DefaultListModel<Villano> listModel1 = new DefaultListModel <Villano>();
 		for (int i = 0; i < listaVillano.size(); i++)
-		{
-		    listModel1.addElement(listaVillano.get(i));
-		}
+			{
+			    listModel1.addElement(listaVillano.get(i));
+			}
 		listVil.setModel(listModel1);
 
 		
@@ -116,7 +126,6 @@ public class ArenaVentana extends JFrame {
 		textAreaGana.setBounds(333, 375, 183, 45);
 		
 		textAreaGana.setVisible(false);
-		//contentPane.add(textAreaGana);
 		getContentPane().add(textAreaGana);
 		
 		ArrayList<Superheroe> selecSuper = new ArrayList <Superheroe> ();
@@ -126,26 +135,24 @@ public class ArenaVentana extends JFrame {
 			public void actionPerformed(ActionEvent e) {		
 				for(int i = 0; i<listaSuperheroe.size(); i++)
 				{
-					if(listaSuperheroe.get(i)== listSuper.getSelectedValue()){
+					if(listaSuperheroe.get(i)== listSuper.getSelectedValue())
+					{
 						int j =0;
 						selecSuper.clear();
 						selecSuper.add(listaSuperheroe.get(i));
-						//add(j, listaSuperheroe.get(i));
 						System.out.println("el nombre es:" + selecSuper.get(j));
 					}
 				}
 				for(int i = 0; i<listaVillano.size(); i++)
 				{
-					if(listaVillano.get(i)== listVil.getSelectedValue()){
+					if(listaVillano.get(i)== listVil.getSelectedValue())
+					{
 						int j =0;
 						selecVil.clear();
 						selecVil.add(listaVillano.get(i));
-						//add(j, listaSuperheroe.get(i));
 						System.out.println("el nombre es:" + selecVil.get(j));
 					}
-				}
-				
-				
+				}			
 				String textoG = pelea.sistemaPelea(selecSuper,selecVil);
 				textAreaGana.setText(textoG);
 				textAreaGana.setVisible(true);
@@ -161,11 +168,10 @@ public class ArenaVentana extends JFrame {
 					textArea.setVisible(false);					
 				}
 				else 
-					textArea.setVisible(true);;
-				
+					textArea.setVisible(true);;			
 			}
 		});
-		btnSinfor.setBounds(15, 186, 120, 20);
+		btnSinfor.setBounds(15, 182, 120, 24);
 		contentPane.add(btnSinfor);
 		
 		textArea = new JTextArea ();
@@ -174,7 +180,6 @@ public class ArenaVentana extends JFrame {
 						"Superman: 300 de vida y 110 de ataque, si tiene poder";
 		textArea.setText(texto1);
 		textArea.setVisible(false);
-
 		getContentPane().add(textArea);
 		
 		JButton btnMsInfor = new JButton("M\u00E1s Infor");
@@ -198,9 +203,6 @@ public class ArenaVentana extends JFrame {
 		textAreaV.setText(textoV);
 		textAreaV.setVisible(false);
 		getContentPane().add(textAreaV);
-		
-		
-		
-	
+
 	}
 }

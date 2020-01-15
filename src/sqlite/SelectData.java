@@ -13,12 +13,12 @@ import personas.Villano;
 
 /**
  *
- * @author sqlitetutorial.net
+ * @author Pablo Sarobe Ezponda
  */
 public class SelectData
 {
     /**
-     * Connect to the test.db database
+     * Conectar con la base de datos lucha.db
      * @return the Connection object
      */
     private Connection connect()
@@ -40,9 +40,9 @@ public class SelectData
     }
 
 
-    /**
-     * select all rows in the warehouses table
-     */
+//    /**
+//     * select all rows in the warehouses table
+//     */
 //    public void selectAll()
 //    {
 //        String sql = "SELECT id, name, capacity FROM warehouses";
@@ -70,6 +70,9 @@ public class SelectData
 //            System.out.println(e.getMessage());
 //        }
 //    }
+    /**** Método que crea un ArrayList de Superhéroes seleccionados.
+     * @return devolerá un ArrayList con los superhéroes seleccionados.
+     */
     public   ArrayList <Personaje> selectPersonajes(){
     	
     	String sql=  "SELECT * FROM PERSONAJE";
@@ -116,7 +119,10 @@ public class SelectData
     	return listaPersonaje;
     	
     }
-   public   ArrayList <Superheroe> selectSuperheroes(){
+	/** Método que crea un ArrayList de Villanos seleccionados.
+	 * @return  devolerá un ArrayList con los villanos seleccionados.
+	 */
+	public   ArrayList <Superheroe> selectSuperheroes(){
     	
     	String sql=  "SELECT * FROM SUPERHEROE";
     	 
@@ -166,6 +172,9 @@ public class SelectData
     	return listaSuperheroe;
     	
     }
+    /**Método que crea un ArrayList de Villanos seleccionados.
+     * @return devolerá un ArrayList con los personajes seleccionados.
+     */
     public   ArrayList <Villano> selectVillanos(){
     	
     	String sql=  "SELECT * FROM VILLANO";
@@ -216,101 +225,101 @@ public class SelectData
     	return listaVillano;
     	
     }
-    public void selectAllP()
-    {
-        String sql = "SELECT idPer, bando, nombre, vida, ataque FROM PERSONAJE";
-
-        try
-                (
-                        Connection conn = this.connect();
-                        Statement stmt  = conn.createStatement();
-                        ResultSet rs    = stmt.executeQuery(sql)
-                )
-        {
-
-            // loop through the result set
-            while (rs.next())
-            {
-                System.out.println
-                        (
-                                rs.getInt("idPer") +  "\t" +
-                                rs.getBoolean("bando") + "\t" +
-                                rs.getString("nombre") +  "\t" +
-                                rs.getInt("vida") + "\t" +
-                                rs.getInt("ataque")
-                        );
-            }
-        } catch (SQLException e)
-        {
-            System.out.println(e.getMessage());
-        }
-        
-    }
-
-    public void selectAllS()
-    {
-        String sql = "SELECT idPer, bando, nombre, vida, ataque, poderAtaque FROM SUPERHEROE";
-
-        try
-                (
-                        Connection conn = this.connect();
-                        Statement stmt  = conn.createStatement();
-                        ResultSet rs    = stmt.executeQuery(sql)
-                )
-        {
-
-            // loop through the result set
-            while (rs.next())
-            {
-                System.out.println
-                        (
-                                rs.getInt("idPer") +  "\t" +
-                                rs.getBoolean("bando") + "\t" +
-                                rs.getString("nombre") +  "\t" +
-                                rs.getInt("vida") + "\t" +
-                                rs.getInt("ataque") + "\t" +
-                                rs.getBoolean("poderAtaque")
-                        );
-            }
-        } catch (SQLException e)
-        {
-            System.out.println(e.getMessage());
-        }
-        
-    }
-
-    public void selectAllV()
-    {
-        String sql = "SELECT idPer, bando, nombre, vida, ataque, poderSanar FROM VILLANO";
-
-        try
-                (
-                        Connection conn = this.connect();
-                        Statement stmt  = conn.createStatement();
-                        ResultSet rs    = stmt.executeQuery(sql)
-                )
-        {
-
-            // loop through the result set
-            while (rs.next())
-            {
-                System.out.println
-                        (
-                                rs.getInt("idPer") +  "\t" +
-                                rs.getBoolean("bando") + "\t" +
-                                rs.getString("nombre") +  "\t" +
-                                rs.getInt("vida") + "\t" +
-                                rs.getInt("ataque") + "\t" +
-                                rs.getBoolean("poderSanar")
-                        );
-            }
-        } catch (SQLException e)
-        {
-            System.out.println(e.getMessage());
-        }
-        
-    }
-    /**
+//    public void selectAllP()
+//    {
+//        String sql = "SELECT idPer, bando, nombre, vida, ataque FROM PERSONAJE";
+//
+//        try
+//                (
+//                        Connection conn = this.connect();
+//                        Statement stmt  = conn.createStatement();
+//                        ResultSet rs    = stmt.executeQuery(sql)
+//                )
+//        {
+//
+//            // loop through the result set
+//            while (rs.next())
+//            {
+//                System.out.println
+//                        (
+//                                rs.getInt("idPer") +  "\t" +
+//                                rs.getBoolean("bando") + "\t" +
+//                                rs.getString("nombre") +  "\t" +
+//                                rs.getInt("vida") + "\t" +
+//                                rs.getInt("ataque")
+//                        );
+//            }
+//        } catch (SQLException e)
+//        {
+//            System.out.println(e.getMessage());
+//        }
+//        
+//    }
+//
+//    public void selectAllS()
+//    {
+//        String sql = "SELECT idPer, bando, nombre, vida, ataque, poderAtaque FROM SUPERHEROE";
+//
+//        try
+//                (
+//                        Connection conn = this.connect();
+//                        Statement stmt  = conn.createStatement();
+//                        ResultSet rs    = stmt.executeQuery(sql)
+//                )
+//        {
+//
+//            // loop through the result set
+//            while (rs.next())
+//            {
+//                System.out.println
+//                        (
+//                                rs.getInt("idPer") +  "\t" +
+//                                rs.getBoolean("bando") + "\t" +
+//                                rs.getString("nombre") +  "\t" +
+//                                rs.getInt("vida") + "\t" +
+//                                rs.getInt("ataque") + "\t" +
+//                                rs.getBoolean("poderAtaque")
+//                        );
+//            }
+//        } catch (SQLException e)
+//        {
+//            System.out.println(e.getMessage());
+//        }
+//        
+//    }
+//
+//    public void selectAllV()
+//    {
+//        String sql = "SELECT idPer, bando, nombre, vida, ataque, poderSanar FROM VILLANO";
+//
+//        try
+//                (
+//                        Connection conn = this.connect();
+//                        Statement stmt  = conn.createStatement();
+//                        ResultSet rs    = stmt.executeQuery(sql)
+//                )
+//        {
+//
+//            // loop through the result set
+//            while (rs.next())
+//            {
+//                System.out.println
+//                        (
+//                                rs.getInt("idPer") +  "\t" +
+//                                rs.getBoolean("bando") + "\t" +
+//                                rs.getString("nombre") +  "\t" +
+//                                rs.getInt("vida") + "\t" +
+//                                rs.getInt("ataque") + "\t" +
+//                                rs.getBoolean("poderSanar")
+//                        );
+//            }
+//        } catch (SQLException e)
+//        {
+//            System.out.println(e.getMessage());
+//        }
+//        
+//    }
+    /** Método main en donde se ejecutan los select de Personaje,Superhéroe y Villano.
      * @param args the command line arguments
      */
     public static void main(String[] args)
@@ -319,6 +328,7 @@ public class SelectData
       
         app.selectVillanos();
         app.selectSuperheroes();
+        app.selectPersonajes(); // last done
         
         
         

@@ -6,15 +6,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- *
- * @author sqlitetutorial.net
+ *Es la clase en donde se crean las tablse para la base de datos.
+ * @author Pablo Sarobe Ezponda
  */
 public class CreateTable
 {
 
 
     /**
-     * Create a new table in the test database
+     * Se crea una tabla para Personaje.
      *
      */
     public static void createNewTablePersonaje()
@@ -52,6 +52,9 @@ public class CreateTable
         }
     }
     
+    /**
+     * Se crea una tabla para Superhéroe.
+     */
     public static void createNewTableSuperheroe()
     {
         // SQLite connection string
@@ -89,6 +92,9 @@ public class CreateTable
         }
     }
 
+    /**
+     * Se crea una tabla para Villano.
+     */
     public static void createNewTableVillano()
     {
         // SQLite connection string
@@ -125,10 +131,10 @@ public class CreateTable
             System.out.println(e.getMessage());
         }
     }
-    /**
+    /**Método que ejecuta las tablas de Personaje, Superhéroe y Villano.
      * @param args the command line arguments
      */
-    public static void main(String[] args)
+    public static void main()
     {
         createNewTablePersonaje();
         createNewTableSuperheroe();

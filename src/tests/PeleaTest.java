@@ -13,12 +13,19 @@ import personas.Superheroe;
 import personas.Villano;
 
 
+/**Clase en donde se realza la comprobación del algoritmo de pelea en JUnit.
+ * @author Pablo Sarobe Ezponda
+ *
+ */
 public class PeleaTest {
 
 	private ArrayList <Superheroe> testSuper = new ArrayList<Superheroe> ();
 	private ArrayList <Villano> testVil = new ArrayList <Villano> ();
 	
 	
+	/**Método con el Before.
+	 * 
+	 */
 	@Before
 	public void setUp (){
 		
@@ -40,10 +47,16 @@ public class PeleaTest {
 		b.setPoderSanar(false);		
 		testVil.add(b);
 	}
+	/**Método con el After.
+	 * 
+	 */
 	@After
 	public void tearDown (){
 		
 	}
+	/**Método en dodne se realiza el test de comprobación de JUnit
+	 * 
+	 */
 	@Test
 	public void comprobarAccion (){
 		

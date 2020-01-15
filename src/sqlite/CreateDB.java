@@ -6,14 +6,14 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- *
- * @author sqlitetutorial.net
+ *La clase en donde se crea la conexión con la base de datos.
+ * @author Pablo Sarobe Ezponda 
  */
 public class CreateDB
 {
 
     /**
-     * Connect to a sample database
+     * Conectarse con una base de datos
      *
      * @param fileName the database file name
      */

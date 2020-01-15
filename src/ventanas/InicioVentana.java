@@ -17,12 +17,19 @@ import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
 import java.awt.Font;
 
+/**Es la clase con la ventana inicio, en donde existen diferentes posibilidades, ARENA, BUSCAR Y SALIR.
+ * @author Pablo Sarobe Ezponda
+ *
+ */
 public class InicioVentana extends JFrame {
 
 	private JPanel contentPane;
 
 	/**
-	 * Launch the application.
+	 * Método en donde se ejecuta main
+	 */
+	/**Met
+	 * @param args
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -37,8 +44,9 @@ public class InicioVentana extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
+
+	/**Se crea el JFrame con diversas opciones, Arena (otra ventana para combatir), Buscar (para buscar más infor) y SALIR.
+	 * 
 	 */
 	public InicioVentana() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -109,15 +117,5 @@ public class InicioVentana extends JFrame {
 		panelFoto.add(labelF);
 		labelF.setIcon(new ImageIcon(InicioVentana.class.getResource("/imagenes/ElCombateDefinitivo_opt (1).jpg")));
 		
-//		JPanel panel = new JPanel();
-//		panel.setBackground(Color.DARK_GRAY);
-//		panel.setBounds(0, 0, 244, 370);
-//		contentPane.add(panel);
-//		panel.setLayout(null);
-//		
-//		JLabel label = new JLabel("New label");
-//		label.setBounds(0, 0, 244, 370);
-//		panel.add(label);
-//		label.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/imagenes/Sin t\u00EDtulo-1.jpg")));
 	}
 }

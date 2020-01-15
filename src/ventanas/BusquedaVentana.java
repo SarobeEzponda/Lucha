@@ -24,13 +24,20 @@ import java.util.stream.Stream;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 
+/**Clase de BusquedaVentana, en donde se centra en realizar diferente tipo de busquedas.
+ * @author Pablo Sarobe Ezponda
+ *
+ */
 public class BusquedaVentana extends JFrame {
 
 	private JPanel contentPane;
 	JTextArea textAreaBus;
 
 	/**
-	 * Launch the application.
+	 * Lanzamiento de la ventana por el main.
+	 */
+	/**Método en donde s elanza el main.
+	 * @param args
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -46,7 +53,9 @@ public class BusquedaVentana extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Es un JFrame, en esta ventana se tiene que selecionar un Villano o Superhéroe, y Atauqe o VIda, y pulsar 
+	 * BUSCAR para uqe paraezcan ordenados. Además, que s epuede realziar una busqueda avanzado (expresión lambda). 
+	 * Y siempre cabe la posibildiad de volver al apágina inicla.
 	 */
 	public BusquedaVentana() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -75,14 +84,11 @@ public class BusquedaVentana extends JFrame {
 		
 		JList listBus = new JList();
 		listBus.setBounds(28, 89, 98, 92);
-		contentPane.add(listBus);
+		contentPane.add(listBus);		
 		
-		
-		DefaultListModel listModel = new DefaultListModel();		
-	
+		DefaultListModel listModel = new DefaultListModel();			
 			listModel.addElement("Vida");
-			listModel.addElement("Ataque");
-			
+			listModel.addElement("Ataque");		
 		listBus.setModel(listModel);
 		
 		JButton btnVolver = new JButton("Volver");
@@ -96,9 +102,7 @@ public class BusquedaVentana extends JFrame {
 		btnVolver.setBounds(28, 261, 104, 29);
 		contentPane.add(btnVolver);
 		
-		Ordenar ordenar = new Ordenar();
-		
-		
+		Ordenar ordenar = new Ordenar();	
 		ArrayList <Personaje> listaAtaque = Ordenar.ordenAtaque();
 		
 		textAreaBus = new JTextArea();
@@ -113,32 +117,24 @@ public class BusquedaVentana extends JFrame {
 		
 		JButton btnBuscar = new JButton("Buscar");
 		btnBuscar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
+			public void actionPerformed(ActionEvent e) {				
 				if(listBus.getSelectedValue()=="Vida"){
 						textAreaBus.setVisible(true);
 						ArrayList <Personaje> listaVida = Ordenar.ordenVida();
-						String texto1 = "";
-						
+						String texto1 = "";					
 						if(listFil.getSelectedValue()=="Superheroe")
 						{																	
 							for(int i = 0; i<listaVida.size(); i++){
 								if(listaVida.get(i).getIdPer()==0 || listaVida.get(i).getIdPer()==1 ){
-									texto1 = texto1 + listaVida.get(i).getNombre() +" tiene vida de " + listaVida.get(i).getVida()+ System.lineSeparator() ;
-										 
+									texto1 = texto1 + listaVida.get(i).getNombre() +" tiene vida de " + listaVida.get(i).getVida()+ System.lineSeparator() ;									 
 									textAreaBus.setText(texto1);
 								}
 							}
 						}
 								else{
-	//						String texto1 = "";
-	//						ArrayList <Personaje> listaVida = Ordenar.ordenVida();
-	//						for(int i = 0; i<listaVida.size(); i++){
-	//							listaVida.get(i);
 									for(int i = 0; i<listaVida.size(); i++){
 										if(listaVida.get(i).getIdPer()==2 || listaVida.get(i).getIdPer()==3 ){
-									texto1 = texto1 + listaVida.get(i).getNombre() +" tiene vida de " + listaVida.get(i).getVida()+ System.lineSeparator() ;
-										 
+									texto1 = texto1 + listaVida.get(i).getNombre() +" tiene vida de " + listaVida.get(i).getVida()+ System.lineSeparator() ;										 
 									textAreaBus.setText(texto1);
 										}
 									}
@@ -148,39 +144,24 @@ public class BusquedaVentana extends JFrame {
 				{
 					textAreaBus.setVisible(true);
 					String texto1 = "";
-					
-//					for(int i = 0; i<listaAtaque.size(); i++){
-//					
-//					texto1 = texto1 + listaAtaque.get(i).getNombre() +" tiene ataque de " + listaAtaque.get(i).getAtaque()+ System.lineSeparator() ;
-//						 
-//					textAreaBus.setText(texto1);
-//				}
 					if(listFil.getSelectedValue()=="Superheroe")
 					{																	
 						for(int i = 0; i<listaAtaque.size(); i++){
 							if(listaAtaque.get(i).getIdPer()==0 || listaAtaque.get(i).getIdPer()==1 ){
-								texto1 = texto1 + listaAtaque.get(i).getNombre() +" tiene ataque de " + listaAtaque.get(i).getAtaque()+ System.lineSeparator() ;
-									 
+								texto1 = texto1 + listaAtaque.get(i).getNombre() +" tiene ataque de " + listaAtaque.get(i).getAtaque()+ System.lineSeparator() ;								 
 								textAreaBus.setText(texto1);
 							}
 						}
 					}
 							else{
-//						String texto1 = "";
-//						ArrayList <Personaje> listaVida = Ordenar.ordenVida();
-//						for(int i = 0; i<listaVida.size(); i++){
-//							listaVida.get(i);
 								for(int i = 0; i<listaAtaque.size(); i++){
 									if(listaAtaque.get(i).getIdPer()==2 || listaAtaque.get(i).getIdPer()==3 ){
-								texto1 = texto1 + listaAtaque.get(i).getNombre() +" tiene ataque de " + listaAtaque.get(i).getAtaque()+ System.lineSeparator() ;
-									 
+								texto1 = texto1 + listaAtaque.get(i).getNombre() +" tiene ataque de " + listaAtaque.get(i).getAtaque()+ System.lineSeparator() ;									 
 								textAreaBus.setText(texto1);
 									}
 								}
-							}
-							
+							}						
 				}
-
 			}
 		});
 		btnBuscar.setBounds(288, 45, 98, 29);
@@ -196,24 +177,16 @@ public class BusquedaVentana extends JFrame {
 				
 					if(listBus.getSelectedValue()=="Vida"){
 						ArrayList <Personaje> listaVida = Ordenar.ordenVida();
-						String texto1 = "";
-						
+						String texto1 = "";						
 						if(listFil.getSelectedValue()=="Superheroe")
 						{										
 							textAreaMenor.setVisible(true);
-
 							for(int i = 0; i<listaVida.size(); i++){
 								if(listaVida.get(i).getIdPer()==0 || listaVida.get(i).getIdPer()==1 ){
-									
-									
-									
 									ArrayList <Personaje> wordList = new ArrayList <Personaje> (listaVida);
 									Stream <Personaje> words = wordList.stream();
-									Stream <Personaje> tongWords = words.filter(w -> w.getVida()>350 && w.getIdPer()<=1);
-								
-									List<Personaje> tokenlist = tongWords.collect(Collectors.toList());    //list
-									 
-									
+									Stream <Personaje> tongWords = words.filter(w -> w.getVida()>350 && w.getIdPer()<=1);	
+									List<Personaje> tokenlist = tongWords.collect(Collectors.toList());    //list						
 									texto1 = tokenlist.get(0).getNombre() + " con "+ tokenlist.get(0).getVida() + System.lineSeparator() ;									 								
 								}
 							}
@@ -222,19 +195,12 @@ public class BusquedaVentana extends JFrame {
 						else if(listFil.getSelectedValue()=="Villano")
 						{										
 							textAreaMenor.setVisible(true);
-
 							for(int i = 0; i<listaVida.size(); i++){
-								if(listaVida.get(i).getIdPer()==2 || listaVida.get(i).getIdPer()==3 ){
-									
-									
-									
+								if(listaVida.get(i).getIdPer()==2 || listaVida.get(i).getIdPer()==3 ){						
 									ArrayList <Personaje> wordList = new ArrayList <Personaje> (listaVida);
 									Stream <Personaje> words = wordList.stream();
-									Stream <Personaje> tongWords = words.filter(w -> w.getVida()>350 && w.getIdPer()>1);
-								
-									List<Personaje> tokenlist = tongWords.collect(Collectors.toList());    //list
-									 
-									
+									Stream <Personaje> tongWords = words.filter(w -> w.getVida()>350 && w.getIdPer()>1);	
+									List<Personaje> tokenlist = tongWords.collect(Collectors.toList());    //list									 									
 									texto1 = tokenlist.get(0).getNombre() + " con "+ tokenlist.get(0).getVida() + System.lineSeparator() ;									 								
 								}
 							}
@@ -248,19 +214,12 @@ public class BusquedaVentana extends JFrame {
 						if(listFil.getSelectedValue()=="Superheroe")
 						{										
 							textAreaMenor.setVisible(true);
-
 							for(int i = 0; i<listaAtaque.size(); i++){
 								if(listaAtaque.get(i).getIdPer()==0 || listaAtaque.get(i).getIdPer()==1 ){
-									
-									
-									
 									ArrayList <Personaje> wordList = new ArrayList <Personaje> (listaAtaque);
 									Stream <Personaje> words = wordList.stream();
-									Stream <Personaje> tongWords = words.filter(w -> w.getAtaque()>105 && w.getIdPer()<=1);
-								
-									List<Personaje> tokenlist = tongWords.collect(Collectors.toList());    //list
-									 
-									
+									Stream <Personaje> tongWords = words.filter(w -> w.getAtaque()>105 && w.getIdPer()<=1);								
+									List<Personaje> tokenlist = tongWords.collect(Collectors.toList());    //list									
 									texto1 = tokenlist.get(0).getNombre() + " con "+ tokenlist.get(0).getAtaque() + System.lineSeparator() ;									 								
 								}
 							}
@@ -269,19 +228,13 @@ public class BusquedaVentana extends JFrame {
 						else if(listFil.getSelectedValue()=="Villano")
 						{										
 							textAreaMenor.setVisible(true);
-
 							for(int i = 0; i<listaVida.size(); i++){
 								if(listaAtaque.get(i).getIdPer()==2 || listaAtaque.get(i).getIdPer()==3 ){
 									
-									
-									
 									ArrayList <Personaje> wordList = new ArrayList <Personaje> (listaAtaque);
 									Stream <Personaje> words = wordList.stream();
-									Stream <Personaje> tongWords = words.filter(w -> w.getAtaque()>105 && w.getIdPer()>1);
-								
+									Stream <Personaje> tongWords = words.filter(w -> w.getAtaque()>105 && w.getIdPer()>1);							
 									List<Personaje> tokenlist = tongWords.collect(Collectors.toList());    //list
-									 
-									
 									texto1 = tokenlist.get(0).getNombre() + " con "+ tokenlist.get(0).getAtaque() + System.lineSeparator() ;									 								
 								}
 							}

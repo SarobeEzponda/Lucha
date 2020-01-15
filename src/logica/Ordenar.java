@@ -5,10 +5,18 @@ import java.util.ArrayList;
 import personas.Personaje;
 import sqlite.SelectData;
 
+/**
+ * Es una clase para ordenar listas de Personaje para emplearlas en la ventana de Busquedas
+ * @author Pablo Sarobe Ezponda
+ */
 public class Ordenar {
 	
 	private static   ArrayList <Personaje> listaPersonaje = new ArrayList <Personaje> ();
 	
+	/**
+	 * Es el método de ordenar por vida los Personajes, de menos a más.
+	 * @return devuelve un ArrayList de Personajes ordenador por vida (de menos a más).
+	 */
 	public static ArrayList<Personaje> ordenVida (){
 		
 		SelectData s = new SelectData ();
@@ -28,9 +36,17 @@ public class Ordenar {
 		return listaVida;
 	    
 	}
+	/**
+	 * Es un método que pasa el ArrayList de Personajes al método doMergeSort.
+	 * @param listaPersonaje es un ArrayList de Personajes.
+	 */
 	public static void mergeSort(ArrayList<Personaje>listaPersonaje){
 		  doMergeSort(listaPersonaje);
 		}
+	/**
+	 * En este método se realiza el algoritmo de ordenación por mergeShort.
+	 * @param listaPersonaje se pasa el ArrayList de Personaje para que se ordene.
+	 */
 	private static void doMergeSort(ArrayList<Personaje> listaPersonaje){
 		  int middle;
 		  ArrayList<Personaje> left = new ArrayList<>();
@@ -52,6 +68,12 @@ public class Ordenar {
 		     merge(listaPersonaje, left, right);
 		  }
 		}
+	/**
+	 * Es otro método para poder realizar la ordenación por MergShort.
+	 * @param listaPersonaje es un ArrayList de Personajes.
+	 * @param left es un ArrayList de Personajes que se emplea como apoyo para ordenar por vida.
+	 * @param rightes un ArrayList de Personajes que se emplea como apoyo para ordenar por vida.
+	 */
 	private static void merge(ArrayList<Personaje> listaPersonaje, ArrayList<Personaje> left, ArrayList<Personaje> right){
 		  //set up a temporary arraylist to build the merge list
 		  ArrayList<Personaje> temp = new ArrayList<>(); 
@@ -87,6 +109,10 @@ public class Ordenar {
 		        numbersIndex++;
 		    }
 		 }
+/**
+ * Es el método de ordenar por ataque los Personajes, de menos a más.
+ * @return devuelve un ArrayList de Personajes ordenador por ataque (de menos a más).
+ */
 public static ArrayList<Personaje> ordenAtaque (){
 		
 		SelectData s = new SelectData ();
@@ -106,9 +132,17 @@ public static ArrayList<Personaje> ordenAtaque (){
 		return listaAtaque;
 	    
 	}
+	/**
+	 * Es un método que pasa el ArrayList de Personajes al método doMergeSortA.
+	 * @param listaPersonaje listaPersonaje es un ArrayList de Personajes.
+	 */
 	public static void mergeSortA(ArrayList<Personaje>listaPersonaje){
 		  doMergeSortA(listaPersonaje);
 		}
+	/**
+	 * En este método se realiza el algoritmo de ordenación por mergeShort.
+	 * @param listaPersonaje se pasa el ArrayList de Personaje para que se ordene.
+	 */
 	private static void doMergeSortA(ArrayList<Personaje> listaPersonaje){
 		  int middle;
 		  ArrayList<Personaje> left = new ArrayList<>();
@@ -130,6 +164,12 @@ public static ArrayList<Personaje> ordenAtaque (){
 		     mergeA(listaPersonaje, left, right);
 		  }
 		}
+	/**
+	 * Es otro método para poder realizar la ordenación por MergShort.
+	 * @param listaPersonaje es un ArrayList de Personajes.
+	 * @param left es un ArrayList de Personajes que se emplea como apoyo para ordenar por ataque.
+	 * @param right es un ArrayList de Personajes que se emplea como apoyo para ordenar por ataque.
+	 */
 	private static void mergeA(ArrayList<Personaje> listaPersonaje, ArrayList<Personaje> left, ArrayList<Personaje> right){
 		  //set up a temporary arraylist to build the merge list
 		  ArrayList<Personaje> temp = new ArrayList<>(); 

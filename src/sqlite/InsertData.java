@@ -7,14 +7,14 @@ import java.sql.SQLException;
 
 
 /**
- *
- * @author sqlitetutorial.net
+ *Es la clase en donde se insertan los datos en las tablas para la BD.
+ * @author Pablo Sarobe Ezponda
  */
 public class InsertData
 {
 
     /**
-     * Connect to the test.db database
+     * Conectar a la base de datos, lucha.db
      *
      * @return the Connection object
      */
@@ -37,12 +37,12 @@ public class InsertData
         return conn;
     }
 
-    /**
-     * Insert a new row into the warehouses table
-     *
-     * @param name
-     * @param capacity
-     */
+//    /**
+//     * Insert a new row into the warehouses table
+//     *
+//     * @param name
+//     * @param capacity
+//     */
 //    public void insert(String name, double capacity)
 //    {
 //        String sql = "INSERT INTO warehouses(name,capacity) VALUES(?,?)";
@@ -63,6 +63,13 @@ public class InsertData
 //        }
 //    }
 
+    /**Método en el que se insertan las variables que tendrá la tabla de personaje.
+     * @param idPer variable int número identificador.
+     * @param bando variable booleana que asigna bando al personaje.
+     * @param nombre variable String con el nombre del personaje.
+     * @param vida variable int con la vida del personaje.
+     * @param ataque variable int con el ataque del personaje.
+     */
     public void insertP(int idPer, boolean bando, String nombre, int vida, int ataque)
     {
         String sql = "INSERT INTO PERSONAJE(idPer,bando,nombre,vida,ataque) VALUES(?,?,?,?,?)";
@@ -85,11 +92,17 @@ public class InsertData
             System.out.println(e.getMessage());
         }
     }
-    /**
-     * @param args the command line arguments
-     */
+ 
 
     
+    /** Método en el que se insertan las variables que tendrá la tabla de Superhéroe.
+     * @param idPer variable int número identificador.
+     * @param bando variable booleana que asigna bando al superhéroe.
+     * @param nombre variable String con el nombre del superhéroe.
+     * @param vida variable int con la vida del superhéroe.
+     * @param ataque variable int con el ataque del superhéroe.
+     * @param poderAtaque variable booleana que decide si el superhéroe tiene poder de aumentar el ataque  o no.
+     */
     public void insertS(int idPer, boolean bando, String nombre, int vida, int ataque, boolean poderAtaque)
     {
         String sql = "INSERT INTO SUPERHEROE(idPer,bando,nombre,vida,ataque, poderAtaque) VALUES(?,?,?,?,?,?)";
@@ -113,6 +126,14 @@ public class InsertData
             System.out.println(e.getMessage());
         }
     }
+    /**Método en el que se insertan las variables que tendrá la tabla de Villano.
+     * @param idPer variable int número identificador.
+     * @param bando variable booleana que asigna bando al villano.
+     * @param nombre variable String con el nombre del villano.
+     * @param vida int con la vida del villano.
+     * @param ataque variable int con el ataque del villano.
+     * @param poderSanar variable booleana que decide si el villano tiene poder de aumentar vida o no.
+     */
     public void insertV(int idPer, boolean bando, String nombre, int vida, int ataque, boolean poderSanar)
     {
         String sql = "INSERT INTO VILLANO (idPer,bando,nombre,vida,ataque, poderSanar) VALUES(?,?,?,?,?,?)";
@@ -136,7 +157,7 @@ public class InsertData
             System.out.println(e.getMessage());
         }
     }
-    /**
+    /**Método en donde se añaden los personajes, superhéroes y villanos.
      * @param args the command line arguments
      */
     public static void main(String[] args)
